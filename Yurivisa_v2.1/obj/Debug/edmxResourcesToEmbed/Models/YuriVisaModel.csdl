@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriVisaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ARTICLE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="img" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="small_content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="view_number" Type="Int32" />
+    <Property Name="date_create" Type="DateTime" Precision="0" />
+    <Property Name="author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ofPage" Type="Int32" />
+    <NavigationProperty Name="WEB_PAGE" Relationship="Self.FK_ARTICLE_WEB_PAGE" FromRole="ARTICLE" ToRole="WEB_PAGE" />
+  </EntityType>
+  <EntityType Name="WEB_CATEGORY">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="WEB_PAGE" Relationship="Self.FK_WEB_PAGE_WEB_CATEGORY" FromRole="WEB_CATEGORY" ToRole="WEB_PAGE" />
+  </EntityType>
+  <EntityType Name="WEB_PAGE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SEO_title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SEO_description" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="page_img" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="page_description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="ofCategory" Type="Int32" />
+    <NavigationProperty Name="ARTICLEs" Relationship="Self.FK_ARTICLE_WEB_PAGE" FromRole="WEB_PAGE" ToRole="ARTICLE" />
+    <NavigationProperty Name="WEB_CATEGORY" Relationship="Self.FK_WEB_PAGE_WEB_CATEGORY" FromRole="WEB_PAGE" ToRole="WEB_CATEGORY" />
+  </EntityType>
+  <Association Name="FK_ARTICLE_WEB_PAGE">
+    <End Role="WEB_PAGE" Type="Self.WEB_PAGE" Multiplicity="0..1" />
+    <End Role="ARTICLE" Type="Self.ARTICLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_PAGE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ARTICLE">
+        <PropertyRef Name="ofPage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_PAGE_WEB_CATEGORY">
+    <End Role="WEB_CATEGORY" Type="Self.WEB_CATEGORY" Multiplicity="0..1" />
+    <End Role="WEB_PAGE" Type="Self.WEB_PAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_CATEGORY">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="WEB_PAGE">
+        <PropertyRef Name="ofCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriVisaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ARTICLEs" EntityType="Self.ARTICLE" />
+    <EntitySet Name="WEB_CATEGORY" EntityType="Self.WEB_CATEGORY" />
+    <EntitySet Name="WEB_PAGE" EntityType="Self.WEB_PAGE" />
+    <AssociationSet Name="FK_ARTICLE_WEB_PAGE" Association="Self.FK_ARTICLE_WEB_PAGE">
+      <End Role="WEB_PAGE" EntitySet="WEB_PAGE" />
+      <End Role="ARTICLE" EntitySet="ARTICLEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_PAGE_WEB_CATEGORY" Association="Self.FK_WEB_PAGE_WEB_CATEGORY">
+      <End Role="WEB_CATEGORY" EntitySet="WEB_CATEGORY" />
+      <End Role="WEB_PAGE" EntitySet="WEB_PAGE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

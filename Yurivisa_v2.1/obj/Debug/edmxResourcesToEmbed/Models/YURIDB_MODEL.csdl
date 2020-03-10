@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CATEGORY_NAME" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="CATEGORY_DISCRIPTION" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="POSTs" Relationship="Self.FK_POST_CATEGORY" FromRole="CATEGORY" ToRole="POST" />
+  </EntityType>
+  <EntityType Name="NEW_CATALOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="CATALOG_NAME" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="METATITLE" Type="String" MaxLength="300" FixedLength="true" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="NEW_CONTENT" Relationship="Self.FK_NEW_CONTENT_NEW_CATALOG" FromRole="NEW_CATALOG" ToRole="NEW_CONTENT" />
+  </EntityType>
+  <EntityType Name="NEW_CONTENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CONTENT" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="CONTENTSTATE" Type="Boolean" />
+    <Property Name="NEW_DATE" Type="DateTime" Precision="0" />
+    <Property Name="CATALOG_NAME" Type="Int32" />
+    <NavigationProperty Name="NEW_CATALOG" Relationship="Self.FK_NEW_CONTENT_NEW_CATALOG" FromRole="NEW_CONTENT" ToRole="NEW_CATALOG" />
+    <Property Name="TITLE" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="POST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIP" Type="String" MaxLength="2000" FixedLength="true" Unicode="true" />
+    <Property Name="METATITLE" Type="String" MaxLength="1000" FixedLength="true" Unicode="false" />
+    <Property Name="POST_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AUTHOR" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="WRITE_DATE" Type="DateTime" Precision="0" />
+    <Property Name="POST_STATE" Type="Boolean" />
+    <Property Name="POST_CATEGORY" Type="Int32" />
+    <Property Name="POST_VIEW" Type="Int32" />
+    <NavigationProperty Name="CATEGORY" Relationship="Self.FK_POST_CATEGORY" FromRole="POST" ToRole="CATEGORY" />
+    <Property Name="TITLE" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_POST_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="POST" Type="Self.POST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POST">
+        <PropertyRef Name="POST_CATEGORY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NEW_CONTENT_NEW_CATALOG">
+    <End Role="NEW_CATALOG" Type="Self.NEW_CATALOG" Multiplicity="0..1" />
+    <End Role="NEW_CONTENT" Type="Self.NEW_CONTENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NEW_CATALOG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NEW_CONTENT">
+        <PropertyRef Name="CATALOG_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+    <EntitySet Name="NEW_CATALOG" EntityType="Self.NEW_CATALOG" />
+    <EntitySet Name="NEW_CONTENT" EntityType="Self.NEW_CONTENT" />
+    <EntitySet Name="POSTs" EntityType="Self.POST" />
+    <AssociationSet Name="FK_POST_CATEGORY" Association="Self.FK_POST_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="POST" EntitySet="POSTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NEW_CONTENT_NEW_CATALOG" Association="Self.FK_NEW_CONTENT_NEW_CATALOG">
+      <End Role="NEW_CATALOG" EntitySet="NEW_CATALOG" />
+      <End Role="NEW_CONTENT" EntitySet="NEW_CONTENT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

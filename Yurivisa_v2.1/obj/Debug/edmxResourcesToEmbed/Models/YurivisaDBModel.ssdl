@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriVisaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="POST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LINK" Type="varchar" MaxLength="150" />
+    <Property Name="SEO_TITLE" Type="nvarchar" MaxLength="200" />
+    <Property Name="SEO_DESCRIPTION" Type="nvarchar" MaxLength="160" />
+    <Property Name="IMG_DESCRIPTION" Type="nvarchar" MaxLength="400" />
+    <Property Name="TEXT_DESCRIPTION" Type="nvarchar" MaxLength="400" />
+    <Property Name="CONTENT" Type="nvarchar(max)" />
+    <Property Name="DATE_CREATE" Type="date" />
+    <Property Name="AUTHOR" Type="nvarchar" MaxLength="20" />
+    <Property Name="VIEW_NUMBER" Type="int" />
+    <Property Name="CATEGORY" Type="int" />
+    <Property Name="POST_STATE" Type="bit" />
+    <Property Name="TITLE" Type="nvarchar" MaxLength="200" />
+    <Property Name="IMG" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_POST_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="POST" Type="Self.POST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POST">
+        <PropertyRef Name="CATEGORY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriVisaDBModelStoreContainer">
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POST" EntityType="Self.POST" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_POST_CATEGORY" Association="Self.FK_POST_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="POST" EntitySet="POST" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

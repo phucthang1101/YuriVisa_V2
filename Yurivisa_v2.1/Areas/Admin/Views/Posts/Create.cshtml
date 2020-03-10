@@ -1,0 +1,161 @@
+﻿@model Yurivisa_v2._1.Models.POST
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>POST</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.LINK, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LINK, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LINK, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SEO_TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SEO_TITLE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SEO_TITLE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SEO_DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SEO_DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SEO_DESCRIPTION, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <h4 class="text-center">DESCRIPTION</h4>
+    <div class="description row mb-5 mx-0" style="border:1px solid black;">
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.IMG_DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.IMG_DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IMG_DESCRIPTION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-8">
+            @Html.LabelFor(model => model.TEXT_DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.TEXT_DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TEXT_DESCRIPTION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <h4 class="text-center">CONTENT</h4>
+    <div class="content" >
+        <div class=" content__header py-2 position-relative">
+            <div class="row mx-0 col-11 mx-auto">
+                <div class="form-group row col-2">
+                    <label for="VIEW_NUMBER" class="col-3 col-form-label">View:</label>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.VIEW_NUMBER, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VIEW_NUMBER, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-3">
+                    <label for="VIEW_NUMBER" class="col-4 col-form-label">Author:</label>
+                    <div class="col-6">
+                        @Html.EditorFor(model => model.AUTHOR, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AUTHOR, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row col-3">
+                    <label for="VIEW_NUMBER" class="col-3 col-form-label">Date:</label>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.DATE_CREATE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DATE_CREATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-11 mx-auto">
+                @*@Html.LabelFor(model => model.IMG, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                @Html.TextAreaFor(model => model.IMG, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IMG, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="bg--pink header__bg"></div>
+        </div>
+
+        <div class="form-group col-11 mx-auto">
+
+
+            @Html.TextAreaFor(model => model.TITLE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TITLE, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="form-group col-11 mx-auto">
+
+
+            @Html.TextAreaFor(model => model.CONTENT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CONTENT, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORY, "CATEGORY", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CATEGORY", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CATEGORY, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.POST_STATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.POST_STATE)
+                @Html.ValidationMessageFor(model => model.POST_STATE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    CKEDITOR.disableAutoInline = true;
+    CKEDITOR.inline('CONTENT')
+    CKEDITOR.inline('IMG_DESCRIPTION')
+    CKEDITOR.inline('TEXT_DESCRIPTION')
+    CKEDITOR.inline('IMG')
+    CKEDITOR.inline('TITLE')   
+    CKEDITOR.instances['IMG'].setData('<img src="/Uploads/img/pngtree-Star-Moon-Celestial-Body-Space-background-photo-876112.jpg" width=100% />');
+    CKEDITOR.instances['IMG_DESCRIPTION'].setData('<img src="/Uploads/img/pngtree-Star-Moon-Celestial-Body-Space-background-photo-876112.jpg" width=100% />');
+    CKEDITOR.instances['TITLE'].setData('<h1 style="text-align:center">THE STANDARD LOREM IPSUM TITLE</h1>');
+    CKEDITOR.instances['CONTENT'].setData('<p style="text-align: center"><b><i>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</i></b></p><hr style="border - top: 1px solid black; width: 90 %; margin - left: auto; margin - right: auto"\><p>What is Lorem Ipsum?</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry"s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>');
+    CKEDITOR.instances['TEXT_DESCRIPTION'].setData("<p>What is Lorem Ipsum?</p><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>");
+    CKFinder.setupCKEditor(null, '/ckfinder/');
+</script>

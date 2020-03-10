@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriVisaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="POSTs" Relationship="Self.FK_POST_CATEGORY" FromRole="CATEGORY" ToRole="POST" />
+  </EntityType>
+  <EntityType Name="POST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LINK" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SEO_TITLE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_DESCRIPTION" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="IMG_DESCRIPTION" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="TEXT_DESCRIPTION" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DATE_CREATE" Type="DateTime" Precision="0" />
+    <Property Name="AUTHOR" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="VIEW_NUMBER" Type="Int32" />
+    <Property Name="CATEGORY" Type="Int32" />
+    <Property Name="POST_STATE" Type="Boolean" />
+    <Property Name="TITLE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IMG" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CATEGORY1" Relationship="Self.FK_POST_CATEGORY" FromRole="POST" ToRole="CATEGORY" />
+  </EntityType>
+  <Association Name="FK_POST_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="POST" Type="Self.POST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POST">
+        <PropertyRef Name="CATEGORY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriVisaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+    <EntitySet Name="POSTs" EntityType="Self.POST" />
+    <AssociationSet Name="FK_POST_CATEGORY" Association="Self.FK_POST_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="POST" EntitySet="POSTs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

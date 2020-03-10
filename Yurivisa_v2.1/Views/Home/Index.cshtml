@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Home";
+    var currentLang = ViewBag.CurrentLanguage;
+    var languages = (string[])ViewBag.Languages;
+}
+
+<div class="w-100">
+    <section id="Carousel-Index">
+        <div id="carouselHome" class="carousel slide w-100 mx-auto" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselHome" data-slide-to="1"></li>
+                <li data-target="#carouselHome" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image:url(/Content/img/slide2.jpg);">
+
+                </div>
+                @*<div class="carousel-item" style="background-image:url(/Content/img/slide2.jpg);">
+                    </div>
+                    <div class="carousel-item" style="background-image:url(/Content/img/slide2.jpg);">
+                    </div>*@
+            </div>
+            @*<div class="text__inner text-center w-75">
+                    <h3 class="title__inner">YURIVISA</h3>
+                    <p class="content__inner my-md-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                    <a class="link__inner" href="">ABOUT US</a>
+                </div>*@
+        </div>
+    </section>
+    <h4 class="index-title"><b>OUR SERVICES</b></h4>
+    <section class="index-container bg__pink mx-2">
+        <div class="services-container">
+            <div class="inner-width">
+
+
+                <div class="services-content">
+                    <a href="#" class="services-content--box">
+                        <div class="services-content__icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="services-content__title">
+                            VISA CHO NGƯỜI NƯỚC NGOÀI
+                        </div>
+                        <div class="services-content__desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in consequat justo. Aenean non suscipit eros, vitae hendrerit quam. Nulla facilisi.
+                        </div>
+                    </a>
+                    <a href="/services/visa-cho-nguoi-viet/gioi-thieu-3" class="services-content--box">
+                        <div class="services-content__icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="services-content__title">
+                            VISA CHO NGƯỜI VIỆT
+                        </div>
+                        <div class="services-content__desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in consequat justo. Aenean non suscipit eros, vitae hendrerit quam. Nulla facilisi.
+                        </div>
+                    </a>
+                    <a class="services-content--box">
+                        <div class="services-content__icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="services-content__title">
+                            CHỨNG MINH TÀI CHÍNH
+                        </div>
+                        <div class="services-content__desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in consequat justo. Aenean non suscipit eros, vitae hendrerit quam. Nulla facilisi.
+                        </div>
+                    </a>
+                    <a class="services-content--box">
+                        <div class="services-content__icon">
+                            <i class="fas fa-stream"></i>
+                        </div>
+                        <div class="services-content__title">
+                            HỢP PHÁP HÓA LÃNH SỰ
+                        </div>
+                        <div class="services-content__desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in consequat justo. Aenean non suscipit eros, vitae hendrerit quam. Nulla facilisi.
+                        </div>
+                    </a>
+
+                </div>
+
+                @*<div class="services-content">
+                        <a href="#modal" class="btn lightbox-btn">CONTACT US NOW</a>
+
+                        <div class="lightbox" id="modal">
+                            <div class="lightbox-container">
+                                <a href="#" class="btn lightbox-close"><i class="fas fa-times"></i></a>
+                                <div class="lightbox-content">
+                                    <div class="lightbox-content__title">
+                                        <p>What's your inqury?</p>
+                                    </div>
+                                    <div class="lightbox-content__form">
+                                        <form action="#">
+                                            <input class="form-control" type="text" placeholder="Your Email Address">
+                                            <textarea class="form-control mt-2" placeholder="Type your inquiry here..."></textarea>
+
+                                            <div class="lightbox-content__actions">
+                                                <a href="#" class="btn">Cancel</a>
+                                                <input type="submit" class="btn lightbox-submit" value="Send Inquiry">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>*@
+            </div>
+        </div>
+    </section>
+
+    <h4 class="index-title"><b>Khách hàng nói gì về chúng tôi</b></h4>
+    <section class="index-container bg__pink mx-2">
+
+
+
+        <div class="carousel-wrap mx-auto" style="width:90%;" id="customer-carousel">
+            <div class="owl-carousel text-center" id="customer">
+                <div class="item p-3">
+                    <img class="img__circle" src="http://placehold.it/250x250">
+                    <h5 class="card-title">Phương Trinh Jolie</h5>
+                    <p class="card-text">
+                        <small>
+                            <i>
+                                "Tôi thực sự rất hài lòng về
+                                dịch vụ của Yurivisa,"
+                            </i>
+                        </small>
+                    </p>
+                </div>
+                <div class="item p-3">
+                    <img class="img__circle" src="http://placehold.it/250x250">
+                    <h5 class="card-title">Phương Trinh Jolie</h5>
+                    <p class="card-text">
+                        <small>
+                            <i>
+                                "Tôi thực sự rất hài lòng về
+                                dịch vụ của Yurivisa,"
+                            </i>
+                        </small>
+                    </p>
+                </div>
+                <div class="item p-3">
+                    <img class="img__circle" src="http://placehold.it/250x250">
+                    <h5 class="card-title">Phương Trinh Jolie</h5>
+                    <p class="card-text">
+                        <small>
+                            <i>
+                                "Tôi thực sự rất hài lòng về
+                                dịch vụ của Yurivisa,"
+                            </i>
+                        </small>
+                    </p>
+                </div>
+                <div class="item p-3">
+                    <img class="img__circle" src="http://placehold.it/250x250">
+                    <h5 class="card-title">Phương Trinh Jolie</h5>
+                    <p class="card-text">
+                        <small>
+                            <i>
+                                "Tôi thực sự rất hài lòng về
+                                dịch vụ của Yurivisa,"
+                            </i>
+                        </small>
+                    </p>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </section>
+</div>

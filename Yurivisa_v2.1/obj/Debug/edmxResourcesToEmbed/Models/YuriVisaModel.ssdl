@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriVisaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ARTICLE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="varchar" MaxLength="400" />
+    <Property Name="title" Type="nvarchar" MaxLength="200" />
+    <Property Name="small_content" Type="nvarchar" MaxLength="200" />
+    <Property Name="view_number" Type="int" />
+    <Property Name="date_create" Type="date" />
+    <Property Name="author" Type="nvarchar" MaxLength="20" />
+    <Property Name="content" Type="nvarchar" MaxLength="4000" />
+    <Property Name="ofPage" Type="int" />
+  </EntityType>
+  <EntityType Name="WEB_CATEGORY">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="WEB_PAGE">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SEO_title" Type="varchar" MaxLength="100" />
+    <Property Name="SEO_description" Type="varchar" MaxLength="160" />
+    <Property Name="page_img" Type="varchar" MaxLength="400" />
+    <Property Name="page_description" Type="varchar" MaxLength="400" />
+    <Property Name="ofCategory" Type="int" />
+  </EntityType>
+  <Association Name="FK_ARTICLE_WEB_PAGE">
+    <End Role="WEB_PAGE" Type="Self.WEB_PAGE" Multiplicity="0..1" />
+    <End Role="ARTICLE" Type="Self.ARTICLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_PAGE">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ARTICLE">
+        <PropertyRef Name="ofPage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WEB_PAGE_WEB_CATEGORY">
+    <End Role="WEB_CATEGORY" Type="Self.WEB_CATEGORY" Multiplicity="0..1" />
+    <End Role="WEB_PAGE" Type="Self.WEB_PAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WEB_CATEGORY">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="WEB_PAGE">
+        <PropertyRef Name="ofCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriVisaDBModelStoreContainer">
+    <EntitySet Name="ARTICLE" EntityType="Self.ARTICLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_CATEGORY" EntityType="Self.WEB_CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WEB_PAGE" EntityType="Self.WEB_PAGE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ARTICLE_WEB_PAGE" Association="Self.FK_ARTICLE_WEB_PAGE">
+      <End Role="WEB_PAGE" EntitySet="WEB_PAGE" />
+      <End Role="ARTICLE" EntitySet="ARTICLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WEB_PAGE_WEB_CATEGORY" Association="Self.FK_WEB_PAGE_WEB_CATEGORY">
+      <End Role="WEB_CATEGORY" EntitySet="WEB_CATEGORY" />
+      <End Role="WEB_PAGE" EntitySet="WEB_PAGE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

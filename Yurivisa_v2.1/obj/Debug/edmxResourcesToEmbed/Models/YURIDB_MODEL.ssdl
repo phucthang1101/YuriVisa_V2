@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YuriDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="CATEGORY_NAME" Type="nchar" MaxLength="100" />
+    <Property Name="CATEGORY_DISCRIPTION" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="NEW_CATALOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="CATALOG_NAME" Type="nchar" MaxLength="300" />
+    <Property Name="METATITLE" Type="char" MaxLength="300" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NEW_CONTENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CONTENT" Type="nvarchar" MaxLength="1500" />
+    <Property Name="CONTENTSTATE" Type="bit" />
+    <Property Name="NEW_DATE" Type="date" />
+    <Property Name="CATALOG_NAME" Type="int" />
+    <Property Name="TITLE" Type="nchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="POST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DESCRIP" Type="nchar" MaxLength="2000" />
+    <Property Name="METATITLE" Type="char" MaxLength="1000" />
+    <Property Name="POST_CONTENT" Type="ntext" />
+    <Property Name="AUTHOR" Type="nchar" MaxLength="200" />
+    <Property Name="WRITE_DATE" Type="date" />
+    <Property Name="POST_STATE" Type="bit" />
+    <Property Name="POST_CATEGORY" Type="int" />
+    <Property Name="POST_VIEW" Type="int" />
+    <Property Name="TITLE" Type="nchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_NEW_CONTENT_NEW_CATALOG">
+    <End Role="NEW_CATALOG" Type="Self.NEW_CATALOG" Multiplicity="0..1" />
+    <End Role="NEW_CONTENT" Type="Self.NEW_CONTENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NEW_CATALOG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NEW_CONTENT">
+        <PropertyRef Name="CATALOG_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_POST_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="POST" Type="Self.POST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="POST">
+        <PropertyRef Name="POST_CATEGORY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YuriDBModelStoreContainer">
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEW_CATALOG" EntityType="Self.NEW_CATALOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NEW_CONTENT" EntityType="Self.NEW_CONTENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="POST" EntityType="Self.POST" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_NEW_CONTENT_NEW_CATALOG" Association="Self.FK_NEW_CONTENT_NEW_CATALOG">
+      <End Role="NEW_CATALOG" EntitySet="NEW_CATALOG" />
+      <End Role="NEW_CONTENT" EntitySet="NEW_CONTENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_POST_CATEGORY" Association="Self.FK_POST_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="POST" EntitySet="POST" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

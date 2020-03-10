@@ -1,0 +1,114 @@
+﻿@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+    $src: null;
+
+    $extmods: ( eot: "?", svg: "#" + str-replace($name, " ", "_") );
+
+    $formats: ( otf: "opentype", ttf: "truetype" );
+
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+$pi: 3.14159265359;
+$_precision: 10;
+
+@function pow($base, $exp) {
+    $value: $base;
+
+    @if $exp > 1 {
+        @for $i from 2 through $exp {
+            $value: $value * $base;
+        }
+    }
+
+    @if $exp < 1 {
+        @for $i from 0 through -$exp {
+            $value: $value / $base;
+        }
+    }
+
+    @return $value;
+}
+
+@function fact($num) {
+    $fact: 1;
+
+    @if $num > 0 {
+        @for $i from 1 through $num {
+            $fact: $fact * $i;
+        }
+    }
+
+    @return $fact;
+}
+
+@function _to_unitless_rad($angle) {
+    
+        $angle: $angle / 180 * $pi;
+   
+
+    @return $angle;
+}
+
+@function sin($angle) {
+    $a: _to_unitless_rad($angle);
+    $sin: $a;
+
+    @for $n from 1 through $_precision {
+        $sin: $sin + (pow(-1, $n) / fact(2 * $n + 1) ) * pow($a, (2 * $n + 1));
+    }
+
+    @return $sin;
+}
+
+@function cos($angle) {
+    $a: _to_unitless_rad($angle);
+    $cos: 1;
+
+    @for $n from 1 through $_precision {
+        $cos: $cos + ( pow(-1,$n) / fact(2*$n) ) * pow($a,2*$n);
+    }
+
+    @return $cos;
+}
+
+@function tan($angle) {
+    @return sin($angle) / cos($angle);
+}
+@mixin flex-config($flex-direction,$flex-basis,$flex-wrap,$align-item,$justify-content){
+    display:flex;
+    flex-flow:$flex-direction $flex-wrap;
+    justify-content:$justify-content;
+    align-items:$align-item;
+    align-content:center;
+}
+
+
+@mixin icon_position($number_of_icon,$index_of_icon,$Ra_of_circle,$top,$right) {
+    $square: 90/($number_of_icon - 1);
+    top: $top + sin($square )*$Ra_of_circle px;
+    right: $right + cos($square )*$Ra_of_circle px;
+}

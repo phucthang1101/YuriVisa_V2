@@ -1,0 +1,10 @@
+﻿:root {
+    --main-blue: rgb(0,176,240);
+    --pink-x: rgb(255,153,204);
+}
+
+body {
+    min-height:100vh;
+       
+}
+

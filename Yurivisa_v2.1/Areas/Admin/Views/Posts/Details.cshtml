@@ -1,0 +1,123 @@
+﻿@model Yurivisa_v2._1.Models.POST
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>POST</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LINK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LINK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEO_TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEO_TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEO_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEO_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMG_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMG_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TEXT_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEXT_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_CREATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_CREATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AUTHOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AUTHOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VIEW_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VIEW_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.POST_STATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.POST_STATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORY1.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORY1.category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

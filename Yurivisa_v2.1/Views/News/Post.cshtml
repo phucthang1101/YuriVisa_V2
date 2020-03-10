@@ -1,0 +1,12 @@
+﻿
+
+@model Yurivisa_v2._1.Models.POST
+@{
+    ViewBag.Title = Model.SEO_TITLE;
+    ViewBag.Description = Html.DisplayFor(m => m.SEO_DESCRIPTION);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-10 col-11 mx-auto" style="box-shadow:0 0 10px rgba(0,0,0,0.5)">
+    @Html.Partial("~/Views/ComponentsPartial/_PartialArticle.cshtml", Model)
+</div>
+

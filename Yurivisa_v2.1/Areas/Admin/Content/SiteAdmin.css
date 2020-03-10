@@ -1,0 +1,165 @@
+﻿:root {
+    --main-blue: rgb(0,176,240);
+    --pink-1: rgb(255,153,204);
+}
+body {
+    background-image: url(/Areas/Admin/Content/img/background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.content #CONTENT .cke_textarea_inline {
+    min-height: 100vh;
+    border: solid 1px black;
+}
+
+#AdminNavbar {
+    width: 0vw;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    margin: 0;
+}
+
+    #AdminNavbar.active {
+        width: 15vw;
+    }
+
+#AdminNavbar, #AdminContainer {
+    padding: 10px;
+    -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
+}
+
+    #AdminContainer.active {
+        width: 100vw;
+    }
+
+#AdminContainer {
+    width: 85vw;
+    right: 0;
+    margin: 0;
+    background: white; /* fallback for old browsers */
+    color:black;
+}
+
+#AdminNavbar, #AdminContainer {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    overflow: auto;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar .navbar__brand {
+    font-size: 2rem;
+}
+.sidebar__icon--open {
+    display: none;
+    top: 5px;
+    left: 5px;
+    transition-delay: 1s;
+    -webkit-transition: display 2s; /* For Safari 3.1 to 6.0 */
+    transition: display 2s;
+}
+    
+    .sidebar__icon--close {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        font-size: 1.2rem;
+        display: none;
+        padding: 5px;
+    }
+
+.sidebar__icon--close {
+    color: white;
+}
+
+    .sidebar__icon--close:hover {
+        color: rgb(173, 0, 255);
+    }
+
+    .sidebar__icon--close.active, .sidebar__icon--open.active {
+        display: block;
+        cursor: pointer;
+    }
+
+.sidebar .sidebar__link {
+    font-size: 1.2rem;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.sidebar a:hover {
+    color: rgb(173, 0, 255);
+}
+#IntroTop{
+    font-size:1.5rem;
+}
+#LoginPage  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%); /* IE 9 */
+    -webkit-transform: translate(-50%,-50%); /* Safari */
+    transform: translate(-50%,-50%);
+}
+.btn__login {
+    background-color: rgb(173, 0, 255);
+    color:white;
+}
+.btn__default {
+    background-color: rgb(173, 0, 255);
+    color: white;
+}
+.link--black {
+    text-decoration: none;
+    color: black;
+}
+    .link--black:hover {
+        color: rgb(173, 0, 255);
+    }
+.link__default{
+    text-decoration:none;
+    color:white;
+}
+    .link__default:hover {
+        color: rgb(173, 0, 255);
+    }
+    .content{
+        
+        width:100%;
+        margin:0;
+        border:1px solid black;
+    }
+.header__bg{
+    height:50%;
+    position:absolute;
+    z-index:0;
+    width:100%;
+    top:0;
+    left:0;
+}
+.bg--pink{
+    background-color:var(--pink-1);
+}
+.content__header .form-group{
+    z-index:2;
+}

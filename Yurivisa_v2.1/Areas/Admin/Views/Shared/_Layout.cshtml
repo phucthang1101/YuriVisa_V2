@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="~/Areas/Admin/Content/SiteAdmin.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Areas/Admin/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/Admin/ckfinder/ckfinder.js"></script>
+</head>
+<body>
+    <nav class="sidebar sidebar--dark active" id="AdminNavbar">
+        <div class="position-relative">
+
+            @Html.ActionLink("Dashboard", "Index", "Home", new { area = "Admin" }, new { @class = "navbar__brand" })
+            <div>
+                <i class="fas fa-times sidebar__icon--close active" id="IconClose"></i>
+
+            </div>
+            @Html.ActionLink("Home", "Index", "Dashboard", new { area = "Admin" }, new { @class = "sidebar__link" })
+
+            @Html.ActionLink("Themes", "Themes", "Dashboard", new { area = "Admin" }, new { @class = "sidebar__link" })
+
+            @Html.ActionLink("Categories", "Index", "Categories", new { area = "Admin" }, new { @class = "sidebar__link" })
+
+            @Html.ActionLink("Posts", "Index", "Posts", new { area = "Admin" }, new { @class = "sidebar__link" })
+
+            @Html.ActionLink("LookupTable", "Index", "LookupTables", new { area = "Admin" }, new { @class = "sidebar__link" })
+
+            @*@Html.ActionLink("Item", "Index", "Items", new { area = "Admin" }, new { @class = "sidebar__link" })*@
+
+        </div>
+    </nav>
+
+    <div class="px-3" id="AdminContainer">
+        <div class="row m-0" id="IntroTop">
+            <div class="mr-auto">
+                <i class="fas fa-tachometer-alt sidebar__icon--open" id="IconOpen"></i>
+            </div>
+            <div class="ml-auto text-right text-uppercase">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+   
+    @Scripts.Render("~/bundles/bootstrap")
+   
+    <script src="~/Areas/Admin/Scripts/SiteAdmin.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YuriVisaDBModelStoreContainer" CdmEntityContainer="YuriVisaDBEntities">
+    <EntitySetMapping Name="ARTICLEs">
+      <EntityTypeMapping TypeName="YuriVisaDBModel.ARTICLE">
+        <MappingFragment StoreEntitySet="ARTICLE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="small_content" ColumnName="small_content" />
+          <ScalarProperty Name="view_number" ColumnName="view_number" />
+          <ScalarProperty Name="date_create" ColumnName="date_create" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="ofPage" ColumnName="ofPage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_CATEGORY">
+      <EntityTypeMapping TypeName="YuriVisaDBModel.WEB_CATEGORY">
+        <MappingFragment StoreEntitySet="WEB_CATEGORY">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WEB_PAGE">
+      <EntityTypeMapping TypeName="YuriVisaDBModel.WEB_PAGE">
+        <MappingFragment StoreEntitySet="WEB_PAGE">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="SEO_title" ColumnName="SEO_title" />
+          <ScalarProperty Name="SEO_description" ColumnName="SEO_description" />
+          <ScalarProperty Name="page_img" ColumnName="page_img" />
+          <ScalarProperty Name="page_description" ColumnName="page_description" />
+          <ScalarProperty Name="ofCategory" ColumnName="ofCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

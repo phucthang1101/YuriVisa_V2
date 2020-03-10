@@ -1,0 +1,100 @@
+﻿
+
+
+@model IEnumerable<Yurivisa_v2._1.Models.POST>
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="row mx-0 px-lg-4">
+
+    <section class="col-md-4 col-12 pl-5 pr-3">
+        <h1 class="font--32">Tin tức</h1>
+        @{
+
+            int count = 0;
+            for (int i = 0; i <= Model.Count() - 1; i++)
+            {
+
+                var item = Model.ElementAtOrDefault(i);
+                var url = '/'+ ViewBag.Title +'/' + item.LINK+'-'+item.ID;
+                if (item.CATEGORY == 1 && count < 10)
+                {
+                    count = count + 1;
+                    <div class="col-12 mb-3">
+                        @Html.Raw(item.IMG_DESCRIPTION)
+                        <div>
+                            <h3> <a href="@url">@Html.Raw(item.SEO_TITLE)</a></h3>
+                            @Html.Raw(item.TEXT_DESCRIPTION)
+                            <small> <i class="fas fa-clock"></i> @Html.Raw(item.DATE_CREATE)</small>
+                        </div>
+                    </div>
+                }
+
+            }
+        }
+    </section>
+
+
+
+    <section class="col-md-4 col-12 pl-5">
+        @{
+            count = 0;
+            <h2 class="font--32">Chia sẻ kinh nghiệm</h2>
+            for (int i = 0; i <= Model.Count() - 1; i++)
+            {
+                var item = Model.ElementAtOrDefault(i);
+                var url = item.LINK;
+                if (item.CATEGORY == 2 && count < 10)
+                {
+                    count = count + 1;
+                    <div class="pb-3">
+                        @Html.Raw(item.IMG_DESCRIPTION)
+                        <div>
+                            <h3> <a href="@url">@Html.Raw(item.SEO_TITLE)</a></h3>
+                            @Html.Raw(item.TEXT_DESCRIPTION)
+                            <small> <i class="fas fa-clock"></i> @Html.Raw(item.DATE_CREATE)</small>
+
+                        </div>
+                    </div>
+                }
+
+            }
+        }
+
+    </section>
+    <div class="col-md-1 my-md-4" style="width:30%; border-right:2px solid #808080;"></div>
+    <section class="col-md-3 col-sm-12 px-4">
+        <h2 class="font--32">Review trip</h2>
+        @{
+            count = 0;
+            for (int i = 0; i <= Model.Count() - 1; i++)
+            {
+                var item = Model.ElementAtOrDefault(i);
+                var url = item.LINK;
+                if (item.CATEGORY == 3 && count < 10)
+                {
+                    count = count + 1;
+                    <div class="pb-3">
+                        @Html.Raw(item.IMG_DESCRIPTION)
+                        <div>
+                            <h4> <a href="@url">@Html.Raw(item.SEO_TITLE)</a></h4>
+                            <div class="font--15">
+                                @Html.Raw(item.TEXT_DESCRIPTION)
+                            </div>
+
+                            <small> <i class="fas fa-clock"></i> @Html.Raw(item.DATE_CREATE)</small>
+
+                        </div>
+                    </div>
+                }
+
+            }
+        }
+
+    </section>
+</section>
+
+

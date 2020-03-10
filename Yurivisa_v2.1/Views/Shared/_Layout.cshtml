@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/Logo YuriVisa.png">
+    <meta name="description" content=@ViewBag.Description />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Owlcarouselcss")
+    @Styles.Render("~/Content/sitecss")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+   
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="MainNav" style="font-size:1.8rem;">
+       
+        @*@using (Html.BeginRouteForm("ChangeCulture", "Home"))
+        {
+            @Html.Hidden("returnUrl", Request.RawUrl)
+            @Html.DropDownList("culture", new SelectList(new[] {
+                            new {value=" ",text= ViewData["ChooseLang"]},
+                        new {value="vi",text= ViewData["Language3"]},
+                        new {value="en",text=ViewData["Language1"]},
+                          new {value="kr",text=ViewData["Language2"]},
+                        }, "value", "text"), new { onchange = "this.form.submit();" } )
+        }*@
+
+       
+
+        <a class="navbar-brand d-block d-lg-none" href="/">
+            <img src="/Content/img/Logo YuriVisa.png" width="100" height="auto" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#MainNavContainer" aria-controls="MainNavContainer" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="MainNavContainer">
+            <ul class="navbar-nav  mt-2 mt-lg-0 align-items-center mx-auto navbar--pink1">
+                <li class="nav-item animation-element border__bottom mx-5">
+                    <a class="nav-link" href="/About">@ViewData["Header_NamePage1"]</a>
+                </li>
+                <li class="nav-item nav-item animation-element border__bottom mx-5 ">
+                    <a class="nav-link" href="/Services">@ViewData["Header_NamePage2"]</a>
+                </li>
+                <li class="nav-item nav-item animation-element border__bottom d-none d-lg-inline-block">
+                    <a class="nav-link" href="/">
+                        <div><img class="w-50 h-auto mx-auto d-block" src="/Content/img/Logo YuriVisa.png" /></div>
+                    </a>
+                </li>
+                <li class="nav-item nav-item animation-element border__bottom mx-5 ">
+                    <a class="nav-link" href="/News">@ViewData["Header_NamePage3"]</a>
+                </li>
+                <li class="nav-item nav-item animation-element border__bottom mx-5">
+                    <a class="nav-link" href="/Payment">@ViewData["Header_NamePage4"]</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="w-100 bg--linear position-relative">
+        <div class="position-fixed w-100 text-center bg-light" style="bottom:0;left:0;z-index:100;">Hotline +84 352 165 585</div>
+        @RenderBody()
+
+
+        <footer class="py-5 bg__pink mt-2">
+            <div class="row text-center mx-0">
+
+
+                <div class="col-md-12 col-lg-7 left mt-3 ">
+                    <div class="row mx-0">
+                        <div class="col-12 col-md-8 text-center px-md-0">
+                            <img class="img-fluid mx-auto mt-2 mb-2" style="width:30%;" src="/Content/img/Logo YuriVisa.png">
+                            <h6 class="text-green-s">
+                                Ngoc Quyen Management Consulting Company Limited
+                            </h6>
+                            <small class="text-green text-left pl-3 text-center">No. 13, Street 41, Ward 10, Khu II, Quận 6, Hồ Chí Minh, Vietnam</small>
+                            <div class="row m-0">
+                                <div class="col-5 px-0 ">
+                                    <p class="pt-2 text-green">
+                                        <strong>MST: </strong>0314385463
+                                    </p>
+                                </div>
+                                <div class="col-7 px-0">
+                                    <p class="text-green pt-2">
+                                        <strong>Email: </strong>yuri@yurivisa.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md-4 d-none d-md-block pt-3">
+                            <br />
+                            <h4 class="box-header">
+                                SERVICES<br />
+                            </h4>
+                            <div class="text-left text-uppercase" style="font-size:0.9rem;">
+                                <a class="link__blue" href="#">  Visa for Vietnamese<br /></a>
+                                <a class="link__blue" href="#">  Vietnam Visa for Foreigner<br /></a>
+                                <a class="link__blue" href="#">  Finance Proof<br /></a>
+                                <a class="link__blue" href="#"> Consular Legalization<br /></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5  px-2">
+
+                    @using (Html.BeginForm("Payment", "Email", FormMethod.Post))
+                    {
+                        <h5 class="mt-3 text-green-s pl-5">Gởi thông tin để nhận tư vấn từ YuriVisa:</h5>
+                        <form id="form-contact">
+                            <div class="form-group row mx-0">
+                                <label class="col-4 col-sm-2 col-md-2">Name</label>
+                                <input name="Name" type="text" class="form-control col-8 col-sm-9 col-md-9 bg-s border-1" placeholder="Your Name">
+                            </div>
+                            <div class="row mx-0">
+                                <div class="col-md-6 col-sm-12 px-0  mx-0">
+                                    <div class="form-group row mx-0">
+                                        <label class="col-4 col-sm-2 col-md-4">Email</label>
+                                        <input name="Email" class="form-control bg-s border-1 col-8 col-sm-9 col-md-8" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 px-0  mx-0">
+                                    <div class="form-group row mx-0">
+                                        <label class="col-4 col-sm-2 col-md-3">Phone</label>
+                                        <input name="Phone" class="form-control bg-s border-1 col-8 col-sm-9 col-md-7" placeholder="Your Phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mx-0">
+                                <label class="col-4 col-sm-2 col-md-2">Question</label>
+                                <textarea name="Question" class="form-control col-8 col-sm-9 col-md-9 bg-s border-1" rows="2" placeholder="Your Question"></textarea>
+                            </div>
+                            <button type="submit" class="btn button-blue text-center btn border-1 text-green pl-4 pr-4 mt-1">Send</button>
+                        </form>
+
+
+
+
+                    }
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Owljs")
+    @Scripts.Render("~/bundles/sitejs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

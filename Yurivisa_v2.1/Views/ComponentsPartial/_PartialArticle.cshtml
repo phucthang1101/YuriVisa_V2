@@ -1,0 +1,40 @@
+﻿@model Yurivisa_v2._1.Models.POST
+<div class="w-100 article__block ">
+    <div class="article__header px-2 pt-2 pt-md-3 ">
+        <div class="article__bg"></div>
+        <div class="article__top row mb-2 mb-md-3">
+            <div class="article__item mr-3 mr-md-4" id="viewNumberArticle">
+                <i class="far fa-eye article__icon"></i>
+               
+                <span class="article__detail">@Html.DisplayFor(model=>model.VIEW_NUMBER)</span>
+            </div>
+            <div class="article__item mr-3 mr-md-4" id="authorArticle">
+                <i class="fas fa-file-signature article__icon"></i>
+              
+                <span class="article__detail">@Html.DisplayFor(model => model.AUTHOR)</span>
+            </div>
+            <div class="article__item mr-3 mr-md-4" id="dateArticle">
+                <i class="far fa-calendar-alt article__icon"></i>
+               
+                <span class="article__detail">@Html.DisplayFor(model => model.DATE_CREATE)</span>
+            </div>
+            <div class="article__item ml-md-auto" id="contactPhone">
+                <i class="fas fa-phone article__icon"></i>
+                <span class="article__name">Hotline:</span>
+                <span class="article__detail">+84 352 165 585</span>
+            </div>
+        </div>
+
+        @Html.Raw(Model.IMG)
+    </div>
+    <div class="article__body px-2 px-md-5">
+       @Html.Raw(Model.TITLE)
+                             
+        <div class="article_content">
+
+            @Html.Raw(Model.CONTENT)
+
+        </div>
+    </div>
+</div>
+

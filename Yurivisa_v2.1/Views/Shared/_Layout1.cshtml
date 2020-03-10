@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content=@ViewBag.Description />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Owlcarouselcss")
+    @Styles.Render("~/Content/sitecss")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <svg id="svg_define" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <defs>
+            <symbol id="homeIcon" viewBox="0 0 460.298 460.297">
+                <title>Home</title>
+                <path d="M230.149,120.939L65.986,256.274c0,0.191-0.048,0.472-0.144,0.855c-0.094,0.38-0.144,0.656-0.144,0.852v137.041
+			c0,4.948,1.809,9.236,5.426,12.847c3.616,3.613,7.898,5.431,12.847,5.431h109.63V303.664h73.097v109.64h109.629
+			c4.948,0,9.236-1.814,12.847-5.435c3.617-3.607,5.432-7.898,5.432-12.847V257.981c0-0.76-0.104-1.334-0.288-1.707L230.149,120.939
+			z" />
+                <path d="M457.122,225.438L394.6,173.476V56.989c0-2.663-0.856-4.853-2.574-6.567c-1.704-1.712-3.894-2.568-6.563-2.568h-54.816
+			c-2.666,0-4.855,0.856-6.57,2.568c-1.711,1.714-2.566,3.905-2.566,6.567v55.673l-69.662-58.245
+			c-6.084-4.949-13.318-7.423-21.694-7.423c-8.375,0-15.608,2.474-21.698,7.423L3.172,225.438c-1.903,1.52-2.946,3.566-3.14,6.136
+			c-0.193,2.568,0.472,4.811,1.997,6.713l17.701,21.128c1.525,1.712,3.521,2.759,5.996,3.142c2.285,0.192,4.57-0.476,6.855-1.998
+			L230.149,95.817l197.57,164.741c1.526,1.328,3.521,1.991,5.996,1.991h0.858c2.471-0.376,4.463-1.43,5.996-3.138l17.703-21.125
+			c1.522-1.906,2.189-4.145,1.991-6.716C460.068,229.007,459.021,226.961,457.122,225.438z" />
+            </symbol>
+            <symbol id="aboutUsIcon" viewBox="0 0 502.643 502.643">
+                <title>About us</title>
+                <path d="M251.256,237.591c37.166,0,67.042-30.048,67.042-66.977c0.043-37.037-29.876-66.999-67.042-66.999
+			c-36.908,0-66.869,29.962-66.869,66.999C184.387,207.587,214.349,237.591,251.256,237.591z" />
+                <path d="M305.032,248.506H197.653c-19.198,0-34.923,17.602-34.923,39.194v107.854c0,1.186,0.604,2.243,0.669,3.473h175.823
+			c0.129-1.229,0.626-2.286,0.626-3.473V287.7C339.912,266.108,324.187,248.506,305.032,248.506z" />
+                <path d="M431.588,269.559c29.832,0,53.754-24.008,53.754-53.668s-23.922-53.711-53.754-53.711
+			c-29.617,0-53.582,24.051-53.582,53.711C377.942,245.53,401.972,269.559,431.588,269.559z" />
+                <path d="M474.708,278.317h-86.046c-15.445,0-28.064,14.107-28.064,31.472v86.413c0,0.928,0.453,1.812,0.518,2.826h141.03
+			c0.065-1.014,0.496-1.898,0.496-2.826v-86.413C502.707,292.424,490.11,278.317,474.708,278.317z" />
+                <path d="M71.011,269.559c29.789,0,53.733-24.008,53.733-53.668S100.8,162.18,71.011,162.18c-29.638,0-53.603,24.051-53.603,53.711
+			S41.373,269.559,71.011,269.559L71.011,269.559z" />
+                <path d="M114.109,278.317H27.977C12.576,278.317,0,292.424,0,309.789v86.413c0,0.928,0.453,1.812,0.539,2.826h141.03
+			c0.065-1.014,0.475-1.898,0.475-2.826v-86.413C142.087,292.424,129.489,278.317,114.109,278.317z" />
+            </symbol>
+            <symbol id="servicesIcon" viewBox="-61 0 512 512">
+                <title>Services</title>
+                <path d="m268.480469 165h-28.988281c-.945313 18.164062-3.695313 35.523438-8.273438 50.261719 18.808594-10.484375 32.835938-28.53125 37.261719-50.261719zm0 0" />
+                <path d="m268.480469 135c-4.425781-21.730469-18.453125-39.777344-37.261719-50.261719 4.578125 14.738281 7.328125 32.097657 8.273438 50.261719zm0 0" />
+                <path d="m209.164062 165h-28.328124c1.984374 32.089844 9.355468 52.535156 14.164062 58.636719 4.808594-6.101563 12.179688-26.546875 14.164062-58.636719zm0 0" />
+                <path d="m158.78125 215.261719c-4.578125-14.738281-7.328125-32.097657-8.273438-50.261719h-28.988281c4.425781 21.730469 18.453125 39.777344 37.261719 50.261719zm0 0" />
+                <path d="m195 76.363281c-4.808594 6.101563-12.179688 26.546875-14.164062 58.636719h28.328124c-1.984374-32.089844-9.355468-52.535156-14.164062-58.636719zm0 0" />
+                <path d="m158.78125 84.738281c-18.808594 10.484375-32.835938 28.53125-37.261719 50.261719h28.988281c.945313-18.164062 3.695313-35.523438 8.273438-50.261719zm0 0" />
+                <path d="m0 45v385.34375c8.859375-5.167969 19.023438-8.34375 30-8.34375h360v-422h-345c-24.8125 0-45 20.1875-45 45zm195 0c57.890625 0 105 47.109375 105 105s-47.109375 105-105 105-105-47.109375-105-105 47.109375-105 105-105zm-135 242h270v30h-270zm0 60h270v30h-270zm0 0" />
+                <path d="m30 512h360v-30h-30c-8.285156 0-15-6.714844-15-15s6.714844-15 15-15h-330c-16.570312 0-30 13.429688-30 30 0 16.566406 13.429688 30 30 30zm0 0" />
+            </symbol>
+            <symbol id="newsIcon" style="fill:#010002;" viewBox="0 0 32 32">
+                <title>News</title>
+                <path d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20
+			c0,0.921,0.284,1.559,0.676,2H4z" />
+                <rect x="4" y="9" width="20" height="2" />
+                <rect x="15" y="21" width="7" height="2" />
+                <rect x="15" y="17" width="9" height="2" />
+                <rect x="15" y="13" width="9" height="2" />
+                <rect x="4" y="13" width="9" height="10" />
+            </symbol>
+            <symbol id="paymentIcon" viewBox="-61 0 512 512">
+                <title>Payment</title>
+                <g>
+                    <path d="M265.442,109.092c-10.602-4.25-13.665-6.82-13.665-11.461c0-3.714,2.813-8.053,10.744-8.053
+					c7.015,0,12.395,2.766,12.443,2.79c0.566,0.302,1.201,0.463,1.83,0.463c1.535,0,2.893-0.929,3.456-2.367l1.927-4.926
+					c0.671-1.795-0.347-3.359-1.645-3.92c-4.319-1.88-12.76-3.335-12.846-3.35c-0.136-0.024-0.609-0.125-0.609-0.678l-0.027-7.146
+					c0-2.152-1.797-3.904-4.003-3.904h-3.457c-2.204,0-4,1.751-4,3.905l0.009,7.513c0,0.576-0.624,0.826-0.852,0.879
+					c-10.655,2.538-17.314,10.343-17.314,20.188c0,12.273,10.145,17.819,21.099,21.982c8.757,3.438,12.329,6.924,12.329,12.037
+					c0,5.564-5.059,9.45-12.307,9.45c-6.189,0-14.565-3.923-14.648-3.963c-0.536-0.254-1.104-0.382-1.688-0.382
+					c-1.594,0-2.982,0.964-3.537,2.457l-1.84,4.982c-0.654,1.86,0.353,3.37,1.642,4.042c5.144,2.679,15.098,4.249,15.541,4.318
+					c0.119,0.017,0.725,0.23,0.725,0.784v7.48c0,2.152,1.797,3.904,4.004,3.904h3.572c2.208,0,4.005-1.751,4.005-3.904v-7.872
+					c0-0.736,0.543-0.801,0.655-0.828c11.351-2.55,18.343-10.855,18.343-21.283C285.325,121.518,279.377,114.597,265.442,109.092z" />
+                    <path d="M260.979,22.509c-51.816,0-93.818,42.005-93.818,93.818c0,51.814,42.002,93.82,93.818,93.82
+					c51.814,0,93.817-42.006,93.817-93.82C354.796,64.514,312.793,22.509,260.979,22.509z M260.979,188.404
+					c-39.808,0-72.076-32.271-72.076-72.076s32.268-72.075,72.076-72.075c39.806,0,72.073,32.27,72.073,72.075
+					S300.785,188.404,260.979,188.404z" />
+                </g>
+                <g>
+                    <path d="M335.733,255.61c-19.95,11.011-47.389,21.192-74.753,25.484c-24.346,3.818-70.148-5.39-70.148-16.265
+					c0-4.121,40.17,10.154,64.469,3.671c18.633-4.971,15.988-22.401,5.853-24.7c-10.076-2.287-69.108-23.913-94.323-24.659
+					c-11.878-0.351-41.203,4.131-55.393,6.442c-4.861,0.791-7.909,0.704-8.213,5.356c-1.412,21.62-4.195,65.832-5.712,88.926
+					c-0.032,0.488,0.646,7.05,6.061,2.432c5.927-5.054,14.24-10.656,21.929-8.912c12.063,2.737,116.424,21.856,130.819,18.51
+					c20.593-4.787,78.888-39.334,90.065-50.072C363.711,265.176,350.244,247.601,335.733,255.61z" />
+                    <path d="M74.426,224.74l-54.672-2.694c-4.221-0.208-8.532,2.973-9.581,7.066l-9.941,90.255c-1.048,4.094,1.55,7.578,5.773,7.741
+					l60.59-0.006c4.224,0.163,7.942-3.151,8.266-7.365l6.654-86.958C81.837,228.566,78.647,224.948,74.426,224.74z M42.24,315.145
+					c-8.349,0-15.116-6.768-15.116-15.116c0-8.349,6.768-15.116,15.116-15.116s15.116,6.768,15.116,15.116
+					C57.356,308.378,50.589,315.145,42.24,315.145z" />
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+
+
+
+    <div class="d-none" id="MainNavbar">
+        <a class="icon show-icon ">
+            <div class="icon__inner main-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+        </a>
+        <div class="container-collapse">
+            <a class="icon" href="/">
+                <svg class="icon__inner home-icon ">
+                    <use xlink:href="#homeIcon"></use>
+                </svg>
+            </a>
+            <a class="icon" href="/services">
+                <svg class="icon__inner service-icon">
+                    <use xlink:href="#servicesIcon"></use>
+                </svg>
+            </a>
+            <a class="icon" href="/news">
+                <svg class="icon__inner news-icon">
+                    <use xlink:href="#newsIcon"></use>
+                </svg>
+            </a>
+            <a class="icon" href="/about">
+                <svg class="icon__inner about-icon">
+                    <use xlink:href="#aboutUsIcon"></use>
+                </svg>
+            </a>
+            <a class="icon" href="/paymentinformation">
+                <svg class="icon__inner pay-icon">
+                    <use xlink:href="#paymentIcon"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="banner-top">
+        <div class="banner__icon p-1 bg-white" style="border-radius:10px;box-shadow:0 0 10px white">
+            <a href="#" class="icon"><img src="~/Content/SVG/facebook.svg" /></a>
+            <a href="#" class="icon"><img src="~/Content/SVG/instagram.svg" /></a>
+            <a href="#" class="icon"><img src="~/Content/SVG/zalo-seeklogo.com.svg" /></a>
+        </div>
+
+        <div class="banner__language" style="font-size:12px">
+            <label for="select_language" style="color:#81d4fa;"><b>LANGUAGE</b></label>
+            <select class="form-lang" id="select_language">
+                <option>VIETNA</option>
+                <option>KOREAN</option>
+            </select>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="MainNav">
+        <a class="navbar-brand" href="#">YURIVISA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/services">SERVICES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">NEWS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/paymentinformation">PAYMENT</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0 row px-3">
+                <input class="form-control mr-sm-2 col-9" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn col-2" style="color:#81d4fa" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="w-100 bg--linear position-relative">
+        <div class="position-fixed w-100 text-center bg-light" style="bottom:0;left:0;z-index:100;">Hotline +84 352 165 585</div>
+        @RenderBody()
+
+
+        <footer class="py-5">
+            <div class="row text-center mx-0">
+
+
+                <div class="col-12 mt-3 ">
+                    <div class="row mx-0">
+                        <div class="col-12 col-md-4 text-center px-md-0">
+                            <img class="img-fluid w-50 mx-auto mt-2 mb-2" src="/Content/img/Logo YuriVisa.png">
+                            <h6 class="text-green-s">
+                                Ngoc Quyen Management Consulting Company Limited
+                            </h6>
+                            <small class="text-green text-left pl-3 text-center">No. 13, Street 41, Ward 10, Khu II, Quận 6, Hồ Chí Minh, Vietnam</small>
+                            <div class="row m-0">
+                                <div class="col-5 px-0 ">
+                                    <p class="pt-2 text-green">
+                                        <strong>MST: </strong>0314385463
+                                    </p>
+                                </div>
+                                <div class="col-7 px-0">
+                                    <p class="text-green pt-2">
+                                        <strong>Email: </strong>yuri@yurivisa.com
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 d-none d-md-block pt-3 ">
+                            <br />
+                            <h2 class="box-header">
+                                SERVICES<br />
+                            </h2>
+                            <div class="box-body">
+                                VISA FOR VIETNAMESE<br />
+                                VIETNAM FOR FOREIGNER<br />
+                                FINANCE PROOF<br />
+                                CONSULAR LEGALIZATION<br />
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4  pt-3 ">
+                            <br />
+                            <h2 class="box-header">
+                                CONTACT<br />
+                            </h2>
+                            <div class="text-left">
+                                Mrs.Yuri<br />
+                                Mrs.Caylin:<br />
+                                Mrs.Vinh:<br />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-12  px-2">
+
+                    @using (Html.BeginForm("Payment", "Email", FormMethod.Post))
+                    {
+                        <h5 class="mt-3 text-green-s pl-5">Gởi thông tin để nhận tư vấn từ YURIVISA:</h5>
+                        <form id="form-contact">
+                            <div class="form-group row mx-0">
+                                <label class="col-4 col-sm-2 col-md-2">Name</label>
+                                <input name="Name" type="text" class="form-control col-8 col-sm-9 col-md-9 bg-s border-1" placeholder="Your Name">
+                            </div>
+                            <div class="row mx-0">
+                                <div class="col-md-6 col-sm-12 px-0  mx-0">
+                                    <div class="form-group row mx-0">
+                                        <label class="col-4 col-sm-2 col-md-4">Email</label>
+                                        <input name="Email" class="form-control bg-s border-1 col-8 col-sm-9 col-md-8" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12 px-0  mx-0">
+                                    <div class="form-group row mx-0">
+                                        <label class="col-4 col-sm-2 col-md-3">Phone</label>
+                                        <input name="Phone" class="form-control bg-s border-1 col-8 col-sm-9 col-md-7" placeholder="Your Phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mx-0">
+                                <label class="col-4 col-sm-2 col-md-2">Question</label>
+                                <textarea name="Question" class="form-control col-8 col-sm-9 col-md-9 bg-s border-1" rows="2" placeholder="Your Question"></textarea>
+                            </div>
+                            <button type="submit" class="btn button__pink text-center btn border-1 text-light pl-4 pr-4 mt-3">Send</button>
+                        </form>
+
+
+
+
+                    }
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Owljs")
+    @Scripts.Render("~/bundles/sitejs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

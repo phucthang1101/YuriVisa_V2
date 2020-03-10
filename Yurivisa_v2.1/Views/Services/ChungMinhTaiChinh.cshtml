@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Yurivisa_v2._1.Models.POST>
+@{
+    ViewBag.Title = "Chứng minh tài chính";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="px-1 p-md-2 p-lg-3 py-md-5 py-2">
+    <h1 class="text-center">Chứng minh tài chính</h1>
+
+    @{
+
+        int count = 0;
+        for (int i = 0; i <= Model.Count() - 1; i++)
+        {
+
+            var item = Model.ElementAtOrDefault(i);
+            var url = "/services/chung-minh-tai-chinh/" + item.LINK + '-' + item.ID;
+            if (item.CATEGORY == 7 && count < 10)
+            {
+                count = count + 1;
+                <div class="col-12 mb-3 row mx-0">
+                    <div class="col-md-6 col-12">
+                        @Html.Raw(item.IMG_DESCRIPTION)
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <h3> <a href="@url">@Html.Raw(item.SEO_TITLE)</a></h3>
+                        @Html.Raw(item.TEXT_DESCRIPTION)
+                        <small> <i class="fas fa-clock"></i> @Html.Raw(item.DATE_CREATE)</small>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+
+</div>

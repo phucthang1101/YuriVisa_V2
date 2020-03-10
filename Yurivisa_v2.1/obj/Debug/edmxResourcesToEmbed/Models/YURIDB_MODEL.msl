@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YuriDBModelStoreContainer" CdmEntityContainer="YuriDBEntities">
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="YuriDBModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+          <ScalarProperty Name="CATEGORY_DISCRIPTION" ColumnName="CATEGORY_DISCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NEW_CATALOG">
+      <EntityTypeMapping TypeName="YuriDBModel.NEW_CATALOG">
+        <MappingFragment StoreEntitySet="NEW_CATALOG">
+          <ScalarProperty Name="CATALOG_NAME" ColumnName="CATALOG_NAME" />
+          <ScalarProperty Name="METATITLE" ColumnName="METATITLE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NEW_CONTENT">
+      <EntityTypeMapping TypeName="YuriDBModel.NEW_CONTENT">
+        <MappingFragment StoreEntitySet="NEW_CONTENT">
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="CONTENTSTATE" ColumnName="CONTENTSTATE" />
+          <ScalarProperty Name="NEW_DATE" ColumnName="NEW_DATE" />
+          <ScalarProperty Name="CATALOG_NAME" ColumnName="CATALOG_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSTs">
+      <EntityTypeMapping TypeName="YuriDBModel.POST">
+        <MappingFragment StoreEntitySet="POST">
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DESCRIP" ColumnName="DESCRIP" />
+          <ScalarProperty Name="METATITLE" ColumnName="METATITLE" />
+          <ScalarProperty Name="POST_CONTENT" ColumnName="POST_CONTENT" />
+          <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+          <ScalarProperty Name="WRITE_DATE" ColumnName="WRITE_DATE" />
+          <ScalarProperty Name="POST_STATE" ColumnName="POST_STATE" />
+          <ScalarProperty Name="POST_CATEGORY" ColumnName="POST_CATEGORY" />
+          <ScalarProperty Name="POST_VIEW" ColumnName="POST_VIEW" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
